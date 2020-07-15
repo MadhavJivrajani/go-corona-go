@@ -1,14 +1,16 @@
 package api
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/MadhavJivrajani/go-corona-go/utils"
 )
 
-// GetStates returns a slice containing a list of valid states.
-func GetStates() error {
+// State prints stats about Covid-19 for a particular state in India.
+func State(args []string) error {
 	url := "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -43,6 +45,18 @@ func GetStates() error {
 		return err
 	}
 
-	utils.BeautifyIndexed(states)
+	state := strings.ToLower(args[0])
+	nameInJSON, exists := utils.ExistsString(states, state)
+
+	if !exists {
+		return fmt.Errorf("requested state is not supported, try the getStates command to get a list of the valid states")
+	}
+
+	stateStats, err := utils.GetSubJSON(subJSON, nameInJSON)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(string(stateStats))
 	return nil
 }

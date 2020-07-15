@@ -5,8 +5,8 @@ import (
 	"sort"
 )
 
-// Beautify prints a lsit of strings alphabetically and numerically indexed.
-func Beautify(items []string) {
+// BeautifyIndexed prints a lsit of strings alphabetically and numerically indexed.
+func BeautifyIndexed(items []string) {
 	sort.Strings(items)
 
 	for index, item := range items {

@@ -16,6 +16,8 @@ limitations under the License.
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/MadhavJivrajani/go-corona-go/api"
 
 	"github.com/spf13/cobra"
@@ -25,9 +27,12 @@ import (
 var getStatesCmd = &cobra.Command{
 	Use:   "getStates",
 	Short: "Gets a list of valid states whose stats can be retreived.",
-	Long: `Example:
+	Long: `Syntax:
 	go-corona-go getStates`,
 	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) > 0 {
+			return fmt.Errorf("getStates command does not take any arguments")
+		}
 		return api.GetStates()
 	},
 }
