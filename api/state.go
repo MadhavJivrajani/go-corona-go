@@ -57,6 +57,10 @@ func State(args []string) error {
 		return err
 	}
 
-	fmt.Println(string(stateStats))
+	err = utils.StateInfo(stateStats)
+	if err != nil {
+		return nil
+	}
+
 	return nil
 }
