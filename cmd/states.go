@@ -25,13 +25,13 @@ import (
 
 // getStatesCmd represents the getStates command
 var getStatesCmd = &cobra.Command{
-	Use:   "getStates",
-	Short: "Gets a list of valid states whose stats can be retreived.",
+	Use:   "states",
+	Short: "Gets a list of valid states whose stats can be retreived",
 	Long: `Syntax:
 	go-corona-go getStates`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) > 0 {
-			return fmt.Errorf("getStates command does not take any arguments")
+			return fmt.Errorf("The states command does not take any arguments")
 		}
 		return api.GetStates()
 	},

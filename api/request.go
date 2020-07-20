@@ -3,18 +3,16 @@ package api
 import (
 	"io/ioutil"
 	"net/http"
-
-	"github.com/MadhavJivrajani/go-corona-go/utils"
 )
 
-// GetStates returns a slice containing a list of valid states.
-func GetStates() error {
+func ApiIndia() ([]byte, error) {
 	url := "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
 
 	req, err := http.NewRequest("GET", url, nil)
 
 	if err != nil {
-		return err
+		var empty []byte
+		return empty, err
 	}
 
 	req.Header.Add("x-rapidapi-host", "corona-virus-world-and-india-data.p.rapidapi.com")
@@ -23,26 +21,17 @@ func GetStates() error {
 	res, err := http.DefaultClient.Do(req)
 
 	if err != nil {
-		return err
+		var empty []byte
+		return empty, err
 	}
 
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 
 	if err != nil {
-		return err
+		var empty []byte
+		return empty, err
 	}
 
-	subJSON, err := utils.GetSubJSON(body, "state_wise")
-	if err != nil {
-		return err
-	}
-
-	states, err := utils.GetKeys(subJSON)
-	if err != nil {
-		return err
-	}
-
-	utils.BeautifyIndexed(states)
-	return nil
+	return body, nil
 }

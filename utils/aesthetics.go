@@ -11,7 +11,7 @@ import (
 )
 
 // BeautifyIndexed prints a lsit of strings alphabetically and numerically indexed.
-func BeautifyIndexed(items []string) {
+func ListEntities(items []string, commandType string) {
 	sort.Strings(items)
 
 	var states [][]string
@@ -21,7 +21,7 @@ func BeautifyIndexed(items []string) {
 	}
 
 	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Sl no.", "State"})
+	table.SetHeader([]string{"Sl no.", commandType})
 
 	for _, v := range states {
 		table.Append(v)

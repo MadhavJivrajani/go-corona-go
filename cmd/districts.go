@@ -23,23 +23,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// stateCmd represents the state command
-var stateCmd = &cobra.Command{
-	Use:   "state",
-	Short: "Provides state wise stats of Covid-19 in India",
+// getDistrictsCmd represents the getDistricts command
+var getDistrictsCmd = &cobra.Command{
+	Use:   "districts",
+	Short: "Gets a list of valid districts of a particular state whose stats can be retreived",
 	Long: `Syntax:
-go-corona-go state [state]
-
+	go-corona-go getDistricts [state]
+	
 Example:
-	go-corona-go state Karnataka`,
+	go-corona-go getDistricts Karnataka`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) > 1 {
-			return fmt.Errorf("state command takes only 1 argument: [state]")
+		if len(args) != 1 {
+			return fmt.Errorf("districts command takes exactly one argument")
 		}
-		return api.State(args)
+		return api.GetDistricts(args)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(stateCmd)
+	rootCmd.AddCommand(getDistrictsCmd)
 }

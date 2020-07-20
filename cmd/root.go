@@ -30,8 +30,7 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "go-corona-go",
-	Short: "A command line utility for getting Covid-19 stats in India.",
-	Run: func(cmd *cobra.Command, args []string) { fmt.Println("Hello CLI") },
+	Short: "A command line utility for getting Covid-19 stats in India",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
