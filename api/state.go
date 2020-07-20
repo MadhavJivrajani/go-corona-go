@@ -35,7 +35,7 @@ func State(args []string) error {
 
 	err = utils.StateInfo(stateStats)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	return nil

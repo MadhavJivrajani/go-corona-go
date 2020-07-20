@@ -7,8 +7,8 @@ import (
 	"github.com/MadhavJivrajani/go-corona-go/utils"
 )
 
-// GetStates returns a slice containing a list of valid states.
-func GetDistricts(args []string) error {
+// Districts returns a slice containing a list of valid districts of a state.
+func Districts(args []string) error {
 	body, err := ApiIndia()
 
 	stateWise, err := utils.GetSubJSON(body, "state_wise")
@@ -21,8 +21,8 @@ func GetDistricts(args []string) error {
 	if err != nil {
 		return err
 	}
-	nameInJSON, exists := utils.ExistsString(states, state)
 
+	nameInJSON, exists := utils.ExistsString(states, state)
 	if !exists {
 		return fmt.Errorf("entered state is not supported, try the states command to get a list of the valid states")
 	}

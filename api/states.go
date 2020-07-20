@@ -4,8 +4,8 @@ import (
 	"github.com/MadhavJivrajani/go-corona-go/utils"
 )
 
-// GetStates returns a slice containing a list of valid states.
-func GetStates() error {
+// States returns a slice containing a list of valid states.
+func States() error {
 	body, err := ApiIndia()
 
 	stateJSON, err := utils.GetSubJSON(body, "state_wise")

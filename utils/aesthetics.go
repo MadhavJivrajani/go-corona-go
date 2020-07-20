@@ -30,21 +30,6 @@ func ListEntities(items []string, commandType string) {
 	table.Render()
 }
 
-func trimQuotes(toTrim []byte) string {
-	return string(toTrim[1 : len(toTrim)-1])
-}
-
-func formatDate(date string) string {
-	var formatted []byte
-
-	for _, char := range date {
-		if char != '\\' {
-			formatted = append(formatted, byte(char))
-		}
-	}
-	return string(formatted)
-}
-
 // StateInfo prints stats about a state leaving out details on a per-district basis.
 func StateInfo(jsonArray []byte) error {
 	unmarshalInto := make(map[string]json.RawMessage)
@@ -55,20 +40,49 @@ func StateInfo(jsonArray []byte) error {
 		return err
 	}
 
-	fmt.Printf("Info was last updated on: %s\n\n", formatDate(
-		trimQuotes(unmarshalInto["lastupdatedtime"])),
+	fmt.Printf("Info was last updated on: %s\n\n", FormatDate(
+		TrimQuotes(unmarshalInto["lastupdatedtime"])),
 	)
 
 	stats := [][]string{
-		[]string{"Active cases", trimQuotes(unmarshalInto["active"])},
-		[]string{"Confirmed cases", trimQuotes(unmarshalInto["confirmed"])},
-		[]string{"No. of deaths", trimQuotes(unmarshalInto["deaths"])},
-		[]string{"No. of confirmed deaths", trimQuotes(unmarshalInto["deaths"])},
-		[]string{"No. of recoveries (yay!)", trimQuotes(unmarshalInto["recovered"])},
+		[]string{"Active cases", TrimQuotes(unmarshalInto["active"])},
+		[]string{"Confirmed cases", TrimQuotes(unmarshalInto["confirmed"])},
+		[]string{"No. of deaths", TrimQuotes(unmarshalInto["deaths"])},
+		[]string{"No. of recoveries (yay!)", TrimQuotes(unmarshalInto["recovered"])},
 	}
 
 	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{trimQuotes(unmarshalInto["state"])})
+	table.SetHeader([]string{TrimQuotes(unmarshalInto["state"])})
+
+	for _, v := range stats {
+		table.Append(v)
+	}
+
+	table.Render()
+	return nil
+}
+
+// StateInfo prints stats about a district of a particular state.
+func DistrictInfo(jsonArray []byte, entity string, lastUpdated string) error {
+	unmarshalInto := make(map[string]json.RawMessage)
+
+	err := json.Unmarshal(jsonArray, &unmarshalInto)
+
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Info was last updated on: %s\n\n", lastUpdated)
+
+	stats := [][]string{
+		[]string{"Active cases", TrimQuotes(unmarshalInto["active"])},
+		[]string{"Confirmed cases", TrimQuotes(unmarshalInto["confirmed"])},
+		[]string{"No. of deaths", TrimQuotes(unmarshalInto["deceased"])},
+		[]string{"No. of recoveries (yay!)", TrimQuotes(unmarshalInto["recovered"])},
+	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{entity})
 
 	for _, v := range stats {
 		table.Append(v)

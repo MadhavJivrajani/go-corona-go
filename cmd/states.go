@@ -33,7 +33,7 @@ var getStatesCmd = &cobra.Command{
 		if len(args) > 0 {
 			return fmt.Errorf("The states command does not take any arguments")
 		}
-		return api.GetStates()
+		return api.States()
 	},
 }
 

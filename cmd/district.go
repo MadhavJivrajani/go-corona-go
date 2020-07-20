@@ -18,6 +18,8 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/MadhavJivrajani/go-corona-go/api"
+
 	"github.com/spf13/cobra"
 )
 
@@ -34,7 +36,7 @@ Example:
 		if len(args) != 2 {
 			return fmt.Errorf("district command requires exactly 2 arguments: [state] [district]")
 		}
-		return nil
+		return api.District(args)
 	},
 }
 

@@ -36,7 +36,7 @@ Example:
 		if len(args) != 1 {
 			return fmt.Errorf("districts command takes exactly one argument")
 		}
-		return api.GetDistricts(args)
+		return api.Districts(args)
 	},
 }
 
