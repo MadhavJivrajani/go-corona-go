@@ -31,11 +31,11 @@ var plotCmd = &cobra.Command{
 	[type]: confirmed (default), deaths, recovered
 
 	confirmed: plots trend of number of confirmed cases of Covid-19 in India each day
-	deceased : plots trend of number of deaths in India due to Covid-19 each day
+	deaths : plots trend of number of deaths in India due to Covid-19 each day
 	recovered: plots trend of number of recoveries from Covid-19 in India each day
 
 Example:
-	go-corona-go plot -t deceased`,
+	go-corona-go plot -t deaths`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		plotType, _ := cmd.Flags().GetString("type")
 
@@ -46,12 +46,11 @@ Example:
 		switch plotType {
 		case "confirmed":
 			return api.PlotConfirmed()
-		case "deceased":
-			//return api.PlotDeaths()
+		case "deaths":
+			return api.PlotDeaths()
 		case "recovered":
-			//return api.PlotRecovered()
+			return api.PlotRecovered()
 		}
-		fmt.Println("plot called")
 		return nil
 	},
 }
