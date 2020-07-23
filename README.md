@@ -186,5 +186,6 @@ This amazing ASCII art was taken from https://ascii.co.uk/art/dog
 
 ## Credits:
 - The API used to get information can be found [here](https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data?endpoint=apiendpoint_e53bab74-70b7-42e9-9d95-4667fdcfa876)
+- The [cobra](https://github.com/spf13/cobra) library was used to develop the CLI.
 - The [tablewriter](https://github.com/olekukonko/tablewriter) library was used to format and print the data in a tabular form.
 - The [asciigraph](https://github.com/guptarohit/asciigraph) library was used to provide in-terminal plotting functionality.
