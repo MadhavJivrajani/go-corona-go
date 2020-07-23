@@ -30,7 +30,7 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "go-corona-go",
-	Short: "A command line utility for getting Covid-19 stats in India",
+	Short: "A command line utility for getting information related to Covid-19 in India.",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -44,9 +44,7 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.go-corona-go.yaml)")
-
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 

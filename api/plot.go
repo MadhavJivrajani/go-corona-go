@@ -70,7 +70,7 @@ func PlotRecovered() error {
 
 	plotDesc := utils.PlotData{
 		XAxis:   "Dates starting from 30th January 2020.",
-		YAxis:   "Number of deaths due to Covid-19 cases in India.",
+		YAxis:   "Number of recoveries from Covid-19 in India.",
 		Caption: "A plot showing the trend of the number of deaths due to Covid-19 per day.",
 	}
 
