@@ -1,4 +1,4 @@
-# Go Corona Go :ghost:
+# Go Corona Go :neckbeard:
 
 Go Corona Go is a command line utility for getting information related to Covid-19 in India.
 
@@ -154,7 +154,7 @@ Plot information:
 
 ```
 ### `sike` command
-I love this command :p
+I love this command :eyes:  
 It will display one of three different messages everytime it is called, feel free to add more!
 
 Usage
@@ -179,6 +179,7 @@ Result:
 
 This amazing ASCII art was taken from https://ascii.co.uk/art/dog
 ```
+(there are two more messages like this one XD)
 
 ## Credits:
 - The API used to get information can be found [here](https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data?endpoint=apiendpoint_e53bab74-70b7-42e9-9d95-4667fdcfa876)
