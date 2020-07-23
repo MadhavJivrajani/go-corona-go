@@ -3,10 +3,13 @@
 Go Corona Go is a command line utility for getting information related to Covid-19 in India.
 
 ## Installation
-Installation can be done using the `go get` command which will take care of installation of any libraries and dependencies nescessary. This will also install the `go-corona-go` executable which can be used anywhere in the termnial provided `$GOPATH/bin` is in your `PATH`.
-
+Installation can be done using the `go get` command which will take care of installation of any libraries and dependencies nescessary. This will also install the `go-corona-go` executable which can be used anywhere in the termnial provided `$GOPATH/bin` is in your `PATH`.  
 ```sh
 go get -u github.com/MadhavJivrajani/go-corona-go
+```  
+Or you can clone this repository and work directly with the executable `go-corona-go`!  
+```
+git clone https://github.com/MadhavJivrajani/go-corona-go.git
 ```
 
 ## Usage
