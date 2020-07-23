@@ -26,7 +26,7 @@ var sikeCmd = &cobra.Command{
 	Use:   "sike",
 	Short: "sike is sike",
 	Long: `Syntax:
-	go-corona-go sike`,
+  go-corona-go sike`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return utils.PullSike()
 	},

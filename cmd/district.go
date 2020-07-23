@@ -28,10 +28,10 @@ var districtCmd = &cobra.Command{
 	Use:   "district",
 	Short: "Provides district-wise stats of a particular state for Covid-19 in India",
 	Long: `Syntax:
-go-corona-go district [state] [district]
+  go-corona-go district [state] [district]
 
 Example:
-	go-corona-go state Karnataka Bengaluru`,
+  go-corona-go state Karnataka Bengaluru`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) != 2 {
 			return fmt.Errorf("district command requires exactly 2 arguments: [state] [district]")

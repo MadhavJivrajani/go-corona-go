@@ -28,10 +28,10 @@ var stateCmd = &cobra.Command{
 	Use:   "state",
 	Short: "Provides state wise stats of Covid-19 in India",
 	Long: `Syntax:
-go-corona-go state [state]
+  go-corona-go state [state]
 
 Example:
-	go-corona-go state Karnataka`,
+  go-corona-go state Karnataka`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) > 1 {
 			return fmt.Errorf("state command takes only 1 argument: [state]")

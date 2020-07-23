@@ -27,15 +27,15 @@ var plotCmd = &cobra.Command{
 	Use:   "plot",
 	Short: "Plots daily data about a particular statistic about Covid-19 in India",
 	Long: `Syntax:
-	go-corona-go plot -t [type]
-	[type]: confirmed (default), deaths, recovered
+  go-corona-go plot -t [type]
+  [type]: confirmed (default), deaths, recovered
 
-	confirmed: plots trend of number of confirmed cases of Covid-19 in India each day
-	deaths : plots trend of number of deaths in India due to Covid-19 each day
-	recovered: plots trend of number of recoveries from Covid-19 in India each day
+  confirmed: plots trend of number of confirmed cases of Covid-19 in India each day
+  deaths : plots trend of number of deaths in India due to Covid-19 each day
+  recovered: plots trend of number of recoveries from Covid-19 in India each day
 
 Example:
-	go-corona-go plot -t deaths`,
+  go-corona-go plot -t deaths`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		plotType, _ := cmd.Flags().GetString("type")
 
