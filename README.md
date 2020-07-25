@@ -168,24 +168,22 @@ go-corona-go sike
 Result:
 
 ```
-        FOR THE LOVE OF DOG! WEAR A MASK!
-         /
-        /
+Meet ken the chicken. ken crossed the road 'cause it ken.
 
- ____|\
-`-/    \
- (\_/)  \
- /_  _   | 
-\/_/||) /
-    '---'
+    \\
+    (o>
+ \\_//)
+  \_/_)
+   _|_
+   
 
 
-This amazing ASCII art was taken from https://ascii.co.uk/art/dog
+This amazing ASCII art was taken from http://www.ascii-art.de/ascii/c/chicken.txt
 ```
 (there are two more messages like this one XD)
 
 ## Credits:
-- The API used to get information can be found [here](https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data?endpoint=apiendpoint_e53bab74-70b7-42e9-9d95-4667fdcfa876)
+- The API used to get information can be found [here](https://rapidapi.com/spamakashrajtech/api/corona-virus-world-and-india-data?endpoint=apiendpoint_e53bab74-70b7-42e9-9d95-4667fdcfa876).
 - The [cobra](https://github.com/spf13/cobra) library was used to develop the CLI.
 - The [tablewriter](https://github.com/olekukonko/tablewriter) library was used to format and print the data in a tabular form.
 - The [asciigraph](https://github.com/guptarohit/asciigraph) library was used to provide in-terminal plotting functionality.
