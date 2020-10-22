@@ -7,10 +7,11 @@ import (
 )
 
 const (
+	DefaultCachePath     = "/tmp/.gocorona"
 	DefaultCacheDuration = 10 * time.Minute
 )
 
-var cache = NewGoCache(DefaultCacheDuration)
+var cache = NewGoCache(DefaultCachePath, DefaultCacheDuration)
 
 //ApiIndia queries the API and returns the response body containing stats about Covid-19 in India.
 func ApiIndia() ([]byte, error) {
@@ -23,7 +24,7 @@ func ApiIndia() ([]byte, error) {
 	}
 
 	if isCached {
-		return cached, nil
+		return []byte(cached), nil
 	}
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -51,7 +52,7 @@ func ApiIndia() ([]byte, error) {
 		return empty, err
 	}
 
-	if err := cache.Put(url, body); err != nil {
+	if err := cache.Put(url, string(body)); err != nil {
 		var empty []byte
 		return empty, err
 	}
@@ -70,7 +71,7 @@ func ApiIndiaTimeline() ([]byte, error) {
 	}
 
 	if isCached {
-		return cached, nil
+		return []byte(cached), nil
 	}
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -96,7 +97,7 @@ func ApiIndiaTimeline() ([]byte, error) {
 		return empty, err
 	}
 
-	if err := cache.Put(url, body); err != nil {
+	if err := cache.Put(url, string(body)); err != nil {
 		var empty []byte
 		return empty, err
 	}
