@@ -3,11 +3,29 @@ package api
 import (
 	"io/ioutil"
 	"net/http"
+	"time"
 )
+
+const (
+	DefaultCachePath     = "/tmp/.gocorona"
+	DefaultCacheDuration = 10 * time.Minute
+)
+
+var cache = NewGoCache(DefaultCachePath, DefaultCacheDuration)
 
 //ApiIndia queries the API and returns the response body containing stats about Covid-19 in India.
 func ApiIndia() ([]byte, error) {
 	url := "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
+
+	cached, isCached, err := cache.Get(url)
+	if err != nil {
+		var empty []byte
+		return empty, err
+	}
+
+	if isCached {
+		return []byte(cached), nil
+	}
 
 	req, err := http.NewRequest("GET", url, nil)
 
@@ -34,13 +52,27 @@ func ApiIndia() ([]byte, error) {
 		return empty, err
 	}
 
+	if err := cache.Put(url, string(body)); err != nil {
+		var empty []byte
+		return empty, err
+	}
+
 	return body, nil
 }
 
 // ApiIndiaTimeline queries the timeline feature of the API and returns per-day statistics.
 func ApiIndiaTimeline() ([]byte, error) {
-
 	url := "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india_timeline"
+
+	cached, isCached, err := cache.Get(url)
+	if err != nil {
+		var empty []byte
+		return empty, err
+	}
+
+	if isCached {
+		return []byte(cached), nil
+	}
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -58,7 +90,17 @@ func ApiIndiaTimeline() ([]byte, error) {
 	}
 
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
+
+	if err != nil {
+		var empty []byte
+		return empty, err
+	}
+
+	if err := cache.Put(url, string(body)); err != nil {
+		var empty []byte
+		return empty, err
+	}
 
 	return body, nil
 }
